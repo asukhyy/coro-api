@@ -13,20 +13,6 @@
         <maven>3.3.3</maven>
     </prerequisites>
 
-    <properties>
-        <main.basedir>${basedir}</main.basedir>
-    </properties>
-    
-    <distributionManagement>
-        <repository>
-            <id>coro-repo</id>
-            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>coro-snapshot-repo</id>
-            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
@@ -39,43 +25,18 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
                 <configuration>
-                    <altDeploymentRepository>
-                        coro-snapshot-repo::default::file://${project.build.directory}/repository/snapshots
-                    </altDeploymentRepository>
+                    <skip>true</skip>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <configuration>
-                    <message>Maven artifacts for ${project.version}</message>
-                    <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}/repository/snapshots
-                    </outputDirectory>
-                    <branch>refs/heads/master</branch>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                    <repositoryName>coro-maven-repository</repositoryName>
-                    <repositoryOwner>asukhyy</repositoryOwner>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -86,10 +47,12 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+
             <modules>
                 <module>api</module>
                 <module>parent</module>
             </modules>
         </profile>
     </profiles>
+
 </project>

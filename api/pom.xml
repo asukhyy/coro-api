@@ -15,4 +15,8 @@
 
     <name>Coro API</name>
 
+    <properties>
+        <main.basedir>../..</main.basedir>
+    </properties>
+
 </project>
