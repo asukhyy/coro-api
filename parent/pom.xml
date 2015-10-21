@@ -119,7 +119,7 @@
                     </includes>
                     <repositoryName>coro-maven-repository</repositoryName>
                     <repositoryOwner>asukhyy</repositoryOwner>
-                    <!--<merge>true</merge>-->
+                    <merge>true</merge>
                 </configuration>
                 <executions>
                     <execution>
@@ -145,6 +145,19 @@
                 <coro.repo.prefix>${coro.snapshots.repo.prefix}</coro.repo.prefix>
             </properties>
         </profile>
+
+        <profile>
+            <id>releases</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <coro.repo.url>${coro.releases.repo.url}</coro.repo.url>
+                <coro.repo.path>${coro.releases.repo.path}</coro.repo.path>
+                <coro.repo.prefix>${coro.releases.repo.prefix}</coro.repo.prefix>
+            </properties>
+        </profile>
+
     </profiles>
 
 </project>
