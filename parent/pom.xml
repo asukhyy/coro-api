@@ -142,7 +142,7 @@
             <properties>
                 <coro.repo.url>${coro.snapshots.repo.url}</coro.repo.url>
                 <coro.repo.path>${coro.snapshots.repo.path}</coro.repo.path>
-                <coro.repo.prefix>${coro.snapshots.repo.prefix}}</coro.repo.prefix>
+                <coro.repo.prefix>${coro.snapshots.repo.prefix}</coro.repo.prefix>
             </properties>
         </profile>
     </profiles>
