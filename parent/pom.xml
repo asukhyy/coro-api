@@ -66,8 +66,7 @@
     <scm>
         <url>https://github.com/asukhyy/coro-api</url>
         <connection>https://github.com/asukhyy/coro-api.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:asukhyy/coro-api.git</developerConnection>
-        <tag>HEAD</tag>
+        <developerConnection>scm:git:https://github.com/asukhyy/coro-api.git</developerConnection>
     </scm>
 
     <dependencyManagement>
