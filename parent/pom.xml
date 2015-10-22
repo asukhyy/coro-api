@@ -5,7 +5,7 @@
     <groupId>org.affitto.coro</groupId>
     <packaging>pom</packaging>
     <name>Coro API Parent</name>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <properties>
         <maven.version>3.3.3</maven.version>
