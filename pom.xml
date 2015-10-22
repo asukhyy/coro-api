@@ -59,7 +59,7 @@
                     </includes>
                     <repositoryName>coro-maven-repository</repositoryName>
                     <repositoryOwner>asukhyy</repositoryOwner>
-                    <merge>false</merge>
+                    <merge>true</merge>
                 </configuration>
                 <executions>
                     <execution>
