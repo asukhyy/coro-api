@@ -16,36 +16,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <main.basedir>..</main.basedir>
+        <main.basedir>target</main.basedir>
+
+        <coro.snapshots.repo.path>${main.basedir}/repository/snapshots</coro.snapshots.repo.path>
+        <coro.releases.repo.path>${main.basedir}/repository/releases</coro.releases.repo.path>
 
         <coro.snapshots.repo.url>coro-snapshots-repo::default::file:${coro.snapshots.repo.path}
         </coro.snapshots.repo.url>
-
-
         <coro.releases.repo.url>coro-repo::default::file:${coro.releases.repo.path}
         </coro.releases.repo.url>
 
-        <coro.snapshots.repo.path>${project.build.directory}/repository/snapshots
-        </coro.snapshots.repo.path>
 
-        <coro.releases.repo.path>${project.build.directory}/repository/releases
-        </coro.releases.repo.path>
-
-
-        <coro.snapshots.repo.prefix>snapshots</coro.snapshots.repo.prefix>
-        <coro.releases.repo.prefix>releases</coro.releases.repo.prefix>
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>coro-repo</id>
-            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>coro-snapshots-repo</id>
-            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <developers>
         <developer>
@@ -70,6 +52,17 @@
         <developerConnection>scm:git:https://github.com/asukhyy/coro-api.git</developerConnection>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>coro-repo</id>
+            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>coro-snapshots-repo</id>
+            <url>https://github.com/asukhyy/coro-maven-repository/raw/master/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
         </dependencies>
@@ -81,18 +74,10 @@
     <build>
         <pluginManagement>
             <plugins>
-
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
-
-                <plugin>
-                    <groupId>com.github.github</groupId>
-                    <artifactId>site-maven-plugin</artifactId>
-                    <version>0.12</version>
-                </plugin>
-
             </plugins>
         </pluginManagement>
 
@@ -102,34 +87,6 @@
                 <configuration>
                     <altDeploymentRepository>${coro.repo.url}</altDeploymentRepository>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <configuration>
-                    <skip>true</skip>
-                    <message>Maven artifacts for ${project.version}</message>
-                    <noJekyll>true</noJekyll>
-                    <outputDirectory>${coro.repo.path}</outputDirectory>
-                    <path>${coro.repo.prefix}</path>
-                    <branch>refs/heads/master</branch>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                    <repositoryName>coro-maven-repository</repositoryName>
-                    <repositoryOwner>asukhyy</repositoryOwner>
-                    <merge>true</merge>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -142,8 +99,6 @@
             </activation>
             <properties>
                 <coro.repo.url>${coro.snapshots.repo.url}</coro.repo.url>
-                <coro.repo.path>${coro.snapshots.repo.path}</coro.repo.path>
-                <coro.repo.prefix>${coro.snapshots.repo.prefix}</coro.repo.prefix>
             </properties>
         </profile>
 
@@ -154,8 +109,6 @@
             </activation>
             <properties>
                 <coro.repo.url>${coro.releases.repo.url}</coro.repo.url>
-                <coro.repo.path>${coro.releases.repo.path}</coro.repo.path>
-                <coro.repo.prefix>${coro.releases.repo.prefix}</coro.repo.prefix>
             </properties>
         </profile>
 
